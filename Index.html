@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Winsky Travels — Dreams in. Boarding passes out.</title>
+<meta name="description" content="Winsky Travels — IATA accredited travel agency. Dubai, Zanzibar, Umrah, Malaysia, Morocco packages, visas, corporate travel and flight bookings.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Space+Grotesk:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#2038E8; --blue-dark:#1A2CC4; --navy:#12162E; --cream:#FBF7F0;
+  --yellow:#FFC93D; --pink:#F5426C; --orange:#FF8A3D; --purple:#8B3DFF;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--blue);font-family:'Space Grotesk',sans-serif;overflow-x:hidden;cursor:none}
+a{color:var(--yellow);text-decoration:none}
+a:hover{color:#fff}
+::selection{background:var(--yellow);color:var(--navy)}
+img{max-width:100%;display:block}
+@media (pointer:coarse){body{cursor:auto}#wsk-cursor,#wsk-dot{display:none !important}}
+
+/* custom cursor */
+#wsk-cursor,#wsk-dot{position:fixed;top:0;left:0;transform:translate(-100px,-100px);z-index:9999;pointer-events:none;will-change:transform}
+#wsk-cursor{width:34px;height:34px;filter:drop-shadow(2px 3px 0 rgba(0,0,0,.3))}
+#wsk-dot{width:10px;height:10px;border-radius:50%;background:var(--pink);border:2px solid #fff}
+
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes marquee-r{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+@keyframes float{0%,100%{transform:translateY(0) rotate(var(--tilt,0deg))}50%{transform:translateY(-12px) rotate(var(--tilt,0deg))}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes blink{0%,60%{opacity:1}61%,100%{opacity:.2}}
+@keyframes dash{to{stroke-dashoffset:-24}}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+@keyframes wiggle{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+@keyframes bob{0%,100%{transform:translate(0,0) rotate(8deg)}50%{transform:translate(6px,-14px) rotate(14deg)}}
+
+[data-reveal]{opacity:0;transform:translateY(30px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+[data-reveal].in{opacity:1;transform:none}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 44px;background:rgba(32,56,232,.9);backdrop-filter:blur(10px);border-bottom:2px solid rgba(255,255,255,.18)}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-word{font:400 19px 'Shrikhand',serif;color:var(--yellow);text-shadow:2px 2px 0 rgba(0,0,0,.25)}
+.navlinks{display:flex;gap:26px;font:700 12.5px 'Space Grotesk',sans-serif;text-transform:uppercase;letter-spacing:.07em}
+.navlinks a{color:#fff}
+.navlinks a:hover{color:var(--yellow)}
+.btn{background:var(--yellow);color:var(--navy);font:700 13px 'Space Grotesk',sans-serif;padding:12px 20px;border-radius:12px;box-shadow:4px 4px 0 rgba(0,0,0,.25);transform:rotate(1deg);display:inline-block;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:rotate(0deg) translate(-2px,-2px);box-shadow:7px 7px 0 rgba(0,0,0,.28);color:var(--navy)}
+
+/* hero */
+header.hero{position:relative;padding:64px 44px 72px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(50% 40% at 88% 12%,rgba(245,66,108,.5),transparent 70%),radial-gradient(45% 40% at 5% 95%,rgba(255,138,61,.45),transparent 70%)}
+.hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:44px;align-items:center;max-width:1240px;margin:0 auto}
+.hero-badge-row{display:flex;align-items:center;gap:22px;margin-bottom:26px}
+.hero-logo{position:relative;width:clamp(88px,26vw,132px);height:clamp(88px,26vw,132px);flex:none}
+.hero-logo svg{width:100%;height:100%;display:block}
+.hero-logo span{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:0 8px}
+.plug-tag{display:inline-block;background:#fff;color:var(--blue);font:700 12px 'IBM Plex Mono',monospace;letter-spacing:.2em;padding:8px 14px;border-radius:8px;transform:rotate(-2deg);box-shadow:3px 3px 0 rgba(0,0,0,.2);white-space:nowrap}
+.plug-sub{margin-top:10px;font:600 22px 'Caveat',cursive;color:rgba(255,255,255,.85);transform:rotate(-1deg)}
+h1{margin:0;font:400 clamp(40px,7vw,88px)/1.02 'Shrikhand',serif;color:#fff;text-shadow:5px 5px 0 rgba(0,0,0,.22)}
+.hero-lede{margin:26px 0 0;max-width:520px;font:500 18px/1.6 'Space Grotesk',sans-serif;color:rgba(255,255,255,.92)}
+.hero-cta-row{display:flex;gap:18px;margin-top:34px;align-items:center;flex-wrap:wrap}
+.big-btn{background:var(--yellow);color:var(--navy);font:800 16px 'Space Grotesk',sans-serif;padding:18px 30px;border-radius:14px;box-shadow:5px 5px 0 rgba(0,0,0,.25);display:inline-block;transition:transform .2s,box-shadow .2s}
+.big-btn:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 rgba(0,0,0,.28);color:var(--navy)}
+.hand-note{font:600 21px 'Caveat',cursive;color:#fff;transform:rotate(-2deg);display:inline-block}
+
+.hero-visual{position:relative;height:520px}
+.polaroid{position:absolute;background:#fff;border-radius:14px;box-shadow:6px 8px 0 rgba(0,0,0,.22);animation:float 6s ease-in-out infinite}
+.polaroid img{border-radius:8px;object-fit:cover;width:100%}
+.polaroid-1{top:6px;right:8px;--tilt:4deg;transform:rotate(4deg);width:290px;padding:12px 12px 16px}
+.polaroid-1 img{height:300px}
+.polaroid-2{bottom:24px;left:0;--tilt:-6deg;animation-delay:.8s;transform:rotate(-6deg);width:220px;padding:10px 10px 14px}
+.polaroid-2 img{height:190px}
+.polaroid-cap{padding:10px 4px 0;display:flex;justify-content:space-between;align-items:baseline}
+.polaroid-cap span:first-child{font:600 20px 'Caveat',cursive;color:var(--navy)}
+.live-dot{font:600 10px 'IBM Plex Mono',monospace;color:var(--pink);animation:blink 1.4s steps(1) infinite}
+.hero-badge{position:absolute;font:700 13px 'Space Grotesk',sans-serif;padding:10px 16px;border-radius:999px;box-shadow:3px 3px 0 rgba(0,0,0,.2)}
+.hb-1{top:-6px;left:26px;background:var(--pink);color:#fff;transform:rotate(-7deg);animation:wiggle 4s ease-in-out infinite}
+.hb-2{bottom:120px;right:0;background:var(--navy);color:var(--yellow);transform:rotate(5deg)}
+.hb-3{bottom:-8px;right:120px;font-size:34px;background:none;box-shadow:none;padding:0;animation:bob 4.5s ease-in-out infinite}
+
+/* marquee */
+.marquee-wrap{overflow:hidden;padding:12px 0;white-space:nowrap;border-top:2px solid var(--navy);border-bottom:2px solid var(--navy)}
+.marquee-wrap.yellow{background:var(--yellow)}
+.marquee-wrap.pink{background:var(--pink);padding:11px 0}
+.marquee-track{display:inline-flex}
+.marquee-track.fwd{animation:marquee 18s linear infinite}
+.marquee-track.rev{animation:marquee-r 20s linear infinite}
+.marquee-track span{font:400 18px 'Shrikhand',serif;color:var(--navy)}
+.marquee-track.rev span{font:700 14px 'IBM Plex Mono',monospace;color:#fff;letter-spacing:.2em}
+
+section{padding:72px 44px 80px}
+.wrap{max-width:1240px;margin:0 auto}
+h2{margin:0;font:400 48px 'Shrikhand',serif}
+.section-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px;margin-bottom:38px}
+.eyebrow{font:600 12px 'IBM Plex Mono',monospace;letter-spacing:.15em}
+
+/* packages */
+#packages{background:var(--blue-dark)}
+#packages h2{color:#fff;text-shadow:3px 3px 0 rgba(0,0,0,.2)}
+#packages h2 span{color:var(--yellow)}
+#packages .eyebrow{color:rgba(255,255,255,.65)}
+.flagship{background:#fff;border-radius:20px;padding:16px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:26px;transform:rotate(-1deg);box-shadow:8px 8px 0 rgba(0,0,0,.22);margin-bottom:40px;transition:transform .25s,box-shadow .25s}
+.flagship:hover{transform:rotate(0deg);box-shadow:10px 12px 0 rgba(0,0,0,.25)}
+.flagship-media{position:relative;min-height:340px}
+.flagship-media img{border-radius:12px;height:100%;object-fit:cover}
+.flagship-tag{position:absolute;top:14px;left:14px;background:var(--pink);color:#fff;font:700 12px 'IBM Plex Mono',monospace;letter-spacing:.18em;padding:8px 14px;border-radius:999px;transform:rotate(-3deg);box-shadow:3px 3px 0 rgba(0,0,0,.2)}
+.flagship-body{padding:22px 22px 22px 0;display:flex;flex-direction:column;justify-content:center;gap:14px}
+.flagship-title-row{display:flex;align-items:baseline;gap:14px}
+.flagship-title-row span:first-child{font:400 40px 'Shrikhand',serif;color:var(--navy)}
+.flagship-title-row span:last-child{font:600 14px 'IBM Plex Mono',monospace;color:var(--pink)}
+.flagship-body p{margin:0;font:500 16px/1.65 'Space Grotesk',sans-serif;color:#4A4F63}
+.chip-row{display:flex;gap:10px;flex-wrap:wrap;font:600 12px 'IBM Plex Mono',monospace;color:var(--blue)}
+.chip-row span{border:2px solid var(--blue);border-radius:999px;padding:6px 12px}
+.cta-link{align-self:flex-start;background:var(--blue);color:#fff;font:700 15px 'Space Grotesk',sans-serif;padding:14px 24px;border-radius:12px;box-shadow:4px 4px 0 rgba(0,0,0,.22);transition:transform .2s,box-shadow .2s}
+.cta-link:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 rgba(0,0,0,.25);color:#fff}
+
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;align-items:start}
+.grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;align-items:start}
+.pkg-card{background:#fff;border-radius:18px;padding:14px 14px 20px;box-shadow:6px 6px 0 rgba(0,0,0,.22);transition:transform .25s,box-shadow .25s}
+.pkg-card:hover{transform:rotate(0deg) translateY(-8px) !important;box-shadow:8px 12px 0 rgba(0,0,0,.25)}
+.pkg-card img{height:200px;border-radius:10px;object-fit:cover;width:100%}
+.pkg-card-body{padding:16px 8px 0}
+.pkg-card-title{display:flex;justify-content:space-between;align-items:baseline}
+.pkg-card-title span:first-child{font:400 24px 'Shrikhand',serif;color:var(--navy)}
+.pkg-card-title span:last-child{font:600 12px 'IBM Plex Mono',monospace;color:var(--pink)}
+.pkg-card-body p{margin:8px 0 12px;font:500 13.5px/1.55 'Space Grotesk',sans-serif;color:#4A4F63}
+.pkg-card-body a{font:700 13px 'Space Grotesk',sans-serif;color:var(--blue);text-decoration:underline;text-underline-offset:3px}
+.pkg-card-body a:hover{color:var(--pink)}
+
+/* services */
+#services{background:var(--cream)}
+#services h2{color:var(--navy)}
+#services h2 span{color:var(--pink)}
+#services > .wrap > p{margin:12px 0 0;font:500 16px 'Space Grotesk',sans-serif;color:#5A5F75;max-width:560px}
+.svc-card{background:#fff;border:2.5px solid var(--navy);border-radius:16px;padding:24px 22px 26px;box-shadow:5px 5px 0 var(--navy);min-height:240px;transition:transform .25s,box-shadow .25s}
+.svc-card:hover{transform:rotate(0deg) translate(-2px,-4px) !important;box-shadow:8px 10px 0 var(--navy)}
+.stamp{display:inline-grid;place-items:center;width:64px;height:64px;border:2.5px dashed;border-radius:50%;font:700 10.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;transform:rotate(-8deg);text-align:center;margin-bottom:16px}
+.svc-title{font:400 21px 'Shrikhand',serif;color:var(--navy)}
+.svc-card p{margin:8px 0 0;font:500 13.5px/1.55 'Space Grotesk',sans-serif;color:#4A4F63}
+
+/* why */
+#why{background:var(--navy);position:relative;overflow:hidden}
+.why-bg{position:absolute;inset:0;background:radial-gradient(45% 45% at 92% 8%,rgba(139,61,255,.3),transparent 70%),radial-gradient(40% 40% at 4% 96%,rgba(245,66,108,.25),transparent 70%)}
+.why-grid{position:relative;max-width:1240px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center}
+#why h2{color:#fff;font-size:46px;line-height:1.15;margin:0 0 18px}
+#why h2 span{color:var(--yellow)}
+#why > .why-grid > div:first-child > p{margin:0 0 26px;font:500 16px/1.7 'Space Grotesk',sans-serif;color:rgba(255,255,255,.75)}
+.stat-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+.stat{border:2px solid rgba(255,255,255,.18);border-radius:14px;padding:18px 20px}
+.stat-num{font:400 32px 'Shrikhand',serif;color:var(--yellow)}
+.stat-label{font:500 13px 'Space Grotesk',sans-serif;color:rgba(255,255,255,.65)}
+
+.boarding-pass{--tilt:2deg;animation:float 6s ease-in-out infinite;background:#FDFBF6;border-radius:18px;overflow:hidden;box-shadow:0 26px 54px rgba(0,0,0,.5);transform:rotate(2deg);position:relative}
+.bp-head{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:14px 20px;background:linear-gradient(92deg,var(--orange),var(--pink) 55%,var(--purple))}
+.bp-head span:first-child{font:700 11px 'IBM Plex Mono',monospace;color:#fff;letter-spacing:.14em;white-space:nowrap}
+.bp-head span:last-child{font:600 10px 'IBM Plex Mono',monospace;color:rgba(255,255,255,.85);white-space:nowrap}
+.bp-route{display:flex;justify-content:space-between;align-items:center;padding:20px 20px 8px}
+.bp-city{font:400 38px 'Shrikhand',serif;color:#101528}
+.bp-code{font:500 10px 'IBM Plex Mono',monospace;color:#8A8FA3;letter-spacing:.1em}
+.bp-plane{font:400 20px 'IBM Plex Mono',monospace;color:var(--pink)}
+.bp-meta{display:flex;gap:24px;padding:10px 20px 16px;font:500 11px 'IBM Plex Mono',monospace;color:#4A4F63;flex-wrap:wrap}
+.bp-barcode{border-top:2px dashed #D8D4C9;padding:12px 20px;display:flex;justify-content:space-between;align-items:center}
+.bp-barcode-bar{height:26px;flex:1;background:repeating-linear-gradient(90deg,#101528 0 2px,transparent 2px 5px,#101528 5px 6px,transparent 6px 10px)}
+.bp-badge{position:absolute;top:-18px;right:-10px;background:var(--yellow);color:var(--navy);font:700 13px 'Space Grotesk',sans-serif;padding:10px 16px;border-radius:999px;transform:rotate(6deg);box-shadow:3px 3px 0 rgba(0,0,0,.3);animation:wiggle 4s ease-in-out infinite}
+
+/* client cam */
+#clientcam{background:var(--blue);overflow:hidden}
+#clientcam h2{color:#fff;text-shadow:3px 3px 0 rgba(0,0,0,.2)}
+#clientcam h2 span{color:var(--yellow)}
+#clientcam .section-head span:last-child{font:600 21px 'Caveat',cursive;color:rgba(255,255,255,.85)}
+.testi-card{background:#fff;padding:14px 14px 18px;border-radius:6px;box-shadow:8px 10px 0 rgba(0,0,0,.24);transition:transform .25s}
+.testi-card:hover{transform:rotate(0deg) scale(1.03) !important}
+.testi-card img{height:240px;object-fit:cover;width:100%;border-radius:2px}
+.testi-cap{padding:12px 6px 0;font:600 22px 'Caveat',cursive;color:var(--navy)}
+.testi-card p{margin:8px 6px 0;font:500 13.5px/1.55 'Space Grotesk',sans-serif;color:#4A4F63}
+.testi-who{margin:10px 6px 0;font:600 11px 'IBM Plex Mono',monospace;color:var(--pink);letter-spacing:.12em}
+
+/* team + faq */
+#faqs{background:var(--cream)}
+.tf-grid{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:60px;align-items:start}
+#faqs h2{font-size:42px;color:var(--navy);margin:0 0 12px}
+#faqs h2 span.blue{color:var(--blue)}
+#faqs h2 span.pink{color:var(--pink)}
+#faqs .tf-grid > div > p{margin:0 0 28px;font:500 15px/1.6 'Space Grotesk',sans-serif;color:#5A5F75}
+.team-row{display:flex;align-items:center;gap:16px;background:#fff;border:2.5px solid var(--navy);border-radius:999px;padding:10px 22px 10px 10px;box-shadow:4px 4px 0 var(--navy);transition:transform .25s;margin-bottom:18px}
+.team-row:hover{transform:rotate(0deg) translateX(4px) !important}
+.team-avatar{width:84px;height:84px;flex:none;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--pink) 55%,var(--purple));display:grid;place-items:center;color:#fff;font:700 26px 'Shrikhand',serif}
+.team-name{font:400 19px 'Shrikhand',serif;color:var(--navy)}
+.team-role{font:600 12px 'IBM Plex Mono',monospace;color:var(--pink);letter-spacing:.1em}
+.faq-item{background:#fff;border:2.5px solid var(--navy);border-radius:16px;box-shadow:4px 4px 0 var(--navy);overflow:hidden;margin-bottom:14px}
+.faq-item summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 22px;cursor:pointer;font:700 16px 'Space Grotesk',sans-serif;color:var(--navy)}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary:hover{background:#FFF6E0}
+.faq-plus{flex:none;width:32px;height:32px;display:grid;place-items:center;background:var(--yellow);color:var(--navy);border-radius:50%;font:700 18px 'Space Grotesk',sans-serif;transition:transform .3s}
+.faq-item[open] .faq-plus{background:var(--pink);color:#fff;transform:rotate(45deg)}
+.faq-item p{margin:0;padding:0 22px 20px;font:500 14.5px/1.65 'Space Grotesk',sans-serif;color:#4A4F63}
+
+/* contact */
+#contact{position:relative;padding:88px 44px 96px;background:var(--yellow);overflow:hidden;border-top:2px solid var(--navy);text-align:center}
+.contact-fly{position:absolute;font-size:42px;animation:bob 5s ease-in-out infinite;opacity:.85}
+.contact-fly.f2{font-size:30px;animation-duration:6s;animation-delay:1s;opacity:.7}
+#contact .wrap{position:relative;max-width:900px}
+.contact-note{font:600 24px 'Caveat',cursive;color:var(--navy);transform:rotate(-2deg);display:inline-block}
+#contact h2{margin:8px 0 0;font:400 clamp(40px,8vw,76px)/1.05 'Shrikhand',serif;color:var(--navy);text-shadow:4px 4px 0 rgba(255,255,255,.5)}
+#contact h2 span{color:var(--pink)}
+#contact > .wrap > p{margin:22px auto 0;max-width:480px;font:500 17px/1.6 'Space Grotesk',sans-serif;color:#3d3316}
+.contact-btns{display:flex;gap:18px;justify-content:center;align-items:center;margin-top:36px;flex-wrap:wrap}
+.dark-btn{background:var(--navy);color:var(--yellow);font:800 17px 'Space Grotesk',sans-serif;padding:20px 34px;border-radius:16px;box-shadow:6px 6px 0 rgba(0,0,0,.3);display:inline-block;transition:transform .2s,box-shadow .2s}
+.dark-btn:hover{transform:translate(-2px,-2px);box-shadow:9px 9px 0 rgba(0,0,0,.32);color:var(--yellow)}
+.outline-btn{border:2.5px solid var(--navy);color:var(--navy);font:700 15px 'Space Grotesk',sans-serif;padding:17px 26px;border-radius:16px;display:inline-block;transition:background .2s}
+.outline-btn:hover{background:rgba(255,255,255,.5);color:var(--navy)}
+.contact-foot{margin-top:22px;font:600 20px 'Caveat',cursive;color:var(--navy)}
+
+footer{background:var(--navy);padding:44px;border-top:2px solid var(--navy)}
+.footer-row{max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-brand{display:flex;align-items:center;gap:12px}
+.footer-brand span:first-child{font:400 18px 'Shrikhand',serif;color:var(--yellow)}
+.footer-brand span:last-child{font:600 14px 'Caveat',cursive;color:rgba(255,255,255,.6)}
+.footer-links{display:flex;gap:22px;font:600 12px 'IBM Plex Mono',monospace;letter-spacing:.08em}
+.footer-links a{color:rgba(255,255,255,.65)}
+.footer-links a:hover{color:var(--yellow)}
+.footer-copy{font:500 12px 'Space Grotesk',sans-serif;color:rgba(255,255,255,.45)}
+.credit{font:500 10px 'Space Grotesk',sans-serif;color:#8A8FA3;margin-top:4px}
+
+@media (max-width:920px){
+  .hero-grid{grid-template-columns:1fr !important;gap:32px !important}
+  .flagship{grid-template-columns:1fr !important}
+  .grid4{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+  .grid3{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+  .why-grid{grid-template-columns:1fr !important;gap:40px !important}
+  .tf-grid{grid-template-columns:1fr !important;gap:44px !important}
+}
+@media (max-width:640px){
+  section,[data-screen-label]{padding-left:20px !important;padding-right:20px !important}
+  .nav{padding-top:12px;padding-bottom:12px}
+  .navlinks{display:none !important}
+  h2{font-size:32px !important}
+  #contact h2{font-size:44px !important}
+  .grid3,.grid4{grid-template-columns:1fr !important}
+  .hero-visual{height:auto !important;display:flex;flex-direction:column;align-items:center;gap:24px;margin-top:4px}
+  .polaroid{position:relative !important;inset:auto !important}
+  .hero-badge{display:none !important}
+  .flagship-media{min-height:240px !important}
+}
+</style>
+</head>
+<body>
+<div id="wsk-cursor"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><path d="M3 17 L31 7 L15 19 L17 29 L12 21 Z" fill="#FFC93D" stroke="#12162E" stroke-width="2" stroke-linejoin="round"></path></svg></div>
+<div id="wsk-dot"></div>
+
+<nav class="nav">
+  <a href="#top" class="brand">
+    <span style="position:relative;width:42px;height:42px;display:inline-block"><svg width="42" height="42" viewBox="0 0 42 42"><defs><linearGradient id="wskg-nav" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF8A3D"/><stop offset=".55" stop-color="#F5426C"/><stop offset="1" stop-color="#8B3DFF"/></linearGradient></defs><circle cx="21" cy="21" r="19" fill="#0D1126"/><circle cx="21" cy="21" r="19" fill="none" stroke="url(#wskg-nav)" stroke-width="2.5"/></svg><span style="position:absolute;inset:0;display:grid;place-items:center;font:700 20px 'Caveat',cursive;color:#fff">WS</span></span>
+    <span class="brand-word">Winsky Travels</span>
+  </a>
+  <div class="navlinks">
+    <a href="#packages">Packages</a><a href="#services">Visas</a><a href="#why">Why Winsky</a><a href="#clientcam">Client cam</a><a href="#faqs">FAQs</a>
+  </div>
+  <a class="btn" href="https://wa.me/971555197816" target="_blank" rel="noopener">DM us sharp sharp</a>
+</nav>
+
+<header id="top" class="hero">
+  <div class="hero-bg"></div>
+  <svg width="1200" height="260" viewBox="0 0 1200 260" style="position:absolute;top:30px;left:0;width:100%;opacity:.45" fill="none" preserveAspectRatio="none"><path d="M-20 220 C 320 40, 760 260, 1220 70" stroke="rgba(255,255,255,.6)" stroke-width="2" stroke-dasharray="2 10" stroke-linecap="round" style="animation:dash 1.4s linear infinite"/></svg>
+  <div class="hero-grid">
+    <div style="animation:rise .8s cubic-bezier(.2,.7,.2,1) both">
+      <div class="hero-badge-row">
+        <div class="hero-logo">
+          <svg width="132" height="132" viewBox="0 0 132 132"><defs><linearGradient id="wskg-hero" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF8A3D"/><stop offset=".55" stop-color="#F5426C"/><stop offset="1" stop-color="#8B3DFF"/></linearGradient></defs><circle cx="66" cy="66" r="62" fill="#0D1126"/><circle cx="66" cy="66" r="62" fill="none" stroke="url(#wskg-hero)" stroke-width="4.5"/><g style="animation:spin 24s linear infinite;transform-origin:66px 66px"><circle cx="66" cy="66" r="50" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="1.5" stroke-dasharray="7 9"/><path d="M66 8 L74 16 L66 14 L58 16 Z" fill="#FF8A3D" transform="translate(0,4)"/></g></svg>
+          <span><span style="display:block;white-space:nowrap;font:700 clamp(18px,6vw,34px)/0.9 'Caveat',cursive;color:#fff">Win Sky</span><span style="display:block;white-space:nowrap;font:600 clamp(9px,2.6vw,13px) 'Caveat',cursive;color:#FFC93D;letter-spacing:.14em">travels</span></span>
+        </div>
+        <div>
+          <div class="plug-tag">YOUR DUBAI PLUG ✈</div>
+          <div class="plug-sub">IATA accredited · Abuja HQ · global reach</div>
+        </div>
+      </div>
+      <h1>Dreams in.<br>Boarding <span style="color:var(--yellow)">passes out.</span></h1>
+      <p class="hero-lede">Visa wahala? We don carry am. Dubai, Zanzibar, Umrah, Malaysia, Morocco — oya pack your load, Winsky don land.</p>
+      <div class="hero-cta-row">
+        <a class="big-btn" href="https://wa.me/971555197816" target="_blank" rel="noopener">Book now. Travel better. ✈</a>
+        <span class="hand-note">← na free consultation o!</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="polaroid polaroid-1">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Burj%20Khalifa%20-%20Dubai.jpg?width=1200" alt="Burj Khalifa, Dubai" loading="lazy">
+        <div class="polaroid-cap"><span>December for Dubai 🔥</span><span class="live-dot">● NOW BOARDING</span></div>
+      </div>
+      <div class="polaroid polaroid-2">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Dhow%2C%20Zanzibar.jpg?width=1200" alt="Dhow boat, Zanzibar" loading="lazy">
+        <div class="polaroid-cap"><span style="font:600 18px 'Caveat',cursive;color:var(--navy)">soft life, Zanzibar edition</span></div>
+      </div>
+      <div class="hero-badge hb-1">★ IATA ACCREDITED</div>
+      <div class="hero-badge hb-2">3,000+ HAPPY FLYERS</div>
+      <div class="hero-badge hb-3">✈</div>
+    </div>
+  </div>
+</header>
+
+<div class="marquee-wrap yellow"><div class="marquee-track fwd">
+  <span>DECEMBER GO HOT… BUT NA DUBAI WE DEY&nbsp;&nbsp;✈&nbsp;&nbsp;SOFT LIFE LOADING&nbsp;&nbsp;✈&nbsp;&nbsp;JAPA FOR VACATION&nbsp;&nbsp;✈&nbsp;&nbsp;BOOK NOW. TRAVEL BETTER.&nbsp;&nbsp;✈&nbsp;&nbsp;</span>
+  <span>DECEMBER GO HOT… BUT NA DUBAI WE DEY&nbsp;&nbsp;✈&nbsp;&nbsp;SOFT LIFE LOADING&nbsp;&nbsp;✈&nbsp;&nbsp;JAPA FOR VACATION&nbsp;&nbsp;✈&nbsp;&nbsp;BOOK NOW. TRAVEL BETTER.&nbsp;&nbsp;✈&nbsp;&nbsp;</span>
+</div></div>
+
+<section id="packages">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <h2>Pick your <span style="color:var(--yellow)">adventure</span></h2>
+      <span class="eyebrow">NO PRICES — JUST VIBES. DM TO BOOK.</span>
+    </div>
+    <div class="flagship" data-reveal style="transform:rotate(-1deg)">
+      <div class="flagship-media">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Dubai%20Skyline%20mit%20Burj%20Khalifa%20(cropped).jpg?width=1600" alt="Dubai skyline" loading="lazy">
+        <div class="flagship-tag">★ THE FLAGSHIP</div>
+      </div>
+      <div class="flagship-body">
+        <div class="flagship-title-row"><span>Dubai plug</span><span>ABV → DXB</span></div>
+        <p>Skyline, desert safari, Burj views, shopping wey go finish your suitcase space. Visa sorted, hotels booked, airport pickup waiting. The flagship no dey disappoint.</p>
+        <div class="chip-row"><span>VISA INCLUDED</span><span>DESERT SAFARI</span><span>CITY TOUR</span></div>
+        <a class="cta-link" href="https://wa.me/971555197816" target="_blank" rel="noopener">Oya, DM us →</a>
+      </div>
+    </div>
+    <div class="grid3">
+      <div class="pkg-card" data-reveal style="transform:rotate(-2deg)">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Beach%20at%20Zanzibar.jpg?width=1200" alt="Zanzibar beach" loading="lazy">
+        <div class="pkg-card-body">
+          <div class="pkg-card-title"><span>Zanzibar chill</span><span>ZNZ</span></div>
+          <p>5 nights, all-inclusive beachfront resort. Your only job na to relax — we handle everything else.</p>
+          <a href="https://wa.me/971555197816" target="_blank" rel="noopener">Oya, DM us →</a>
+        </div>
+      </div>
+      <div class="pkg-card" data-reveal style="transform:rotate(1.5deg)">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Petronas%20Panorama%20II.jpg?width=1600" alt="Petronas Towers, Malaysia" loading="lazy">
+        <div class="pkg-card-body">
+          <div class="pkg-card-title"><span>Malaysia nature</span><span>KUL</span></div>
+          <p>Rainforests, twin towers, street food wey go humble you. Explore the gift of nature.</p>
+          <a href="https://wa.me/971555197816" target="_blank" rel="noopener">Oya, DM us →</a>
+        </div>
+      </div>
+      <div class="pkg-card" data-reveal style="transform:rotate(-1deg)">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Sunshine%20on%20mosque%20Hassan%20II%20in%20Casablanca%2C%20Morocco%20-%20Flickr%20-%20Milamber's%20portfolio.jpg?width=1200" alt="Hassan II Mosque, Casablanca" loading="lazy">
+        <div class="pkg-card-body">
+          <div class="pkg-card-title"><span>Morocco magic</span><span>CMN</span></div>
+          <p>Casablanca by the sea, medinas, mint tea and mosaics. Africa's most photogenic corner.</p>
+          <a href="https://wa.me/971555197816" target="_blank" rel="noopener">Oya, DM us →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div data-reveal style="margin-bottom:38px">
+      <h2>We no be only <span style="color:var(--pink)">vacation plug</span></h2>
+      <p>Visas, pilgrimage, business trips, flight tickets — anything wey involve airport, na us dey run am.</p>
+    </div>
+    <div class="grid4">
+      <div class="svc-card" data-reveal style="transform:rotate(-1.5deg)">
+        <div class="stamp" style="border-color:#2E7D4F;color:#2E7D4F">UMRAH</div>
+        <div class="svc-title">Umrah & Hajj visas</div>
+        <p>Multiple-entry Umrah visas, hotels near the Haram, guidance from start to finish. Pilgrimage without palaver.</p>
+      </div>
+      <div class="svc-card" data-reveal style="transform:rotate(1deg)">
+        <div class="stamp" style="border-color:#2038E8;color:#2038E8">VISA</div>
+        <div class="svc-title">Visa services</div>
+        <p>Tourist and transit visas for Dubai and beyond. Correct documents, honest timelines, no story.</p>
+      </div>
+      <div class="svc-card" data-reveal style="transform:rotate(-1deg)">
+        <div class="stamp" style="border-color:#F5426C;color:#F5426C">CORP</div>
+        <div class="svc-title">Corporate travel</div>
+        <p>Business trips, conferences, staff retreats — invoiced properly, planned tightly, zero downtime.</p>
+      </div>
+      <div class="svc-card" data-reveal style="transform:rotate(1.5deg)">
+        <div class="stamp" style="border-color:#FF8A3D;color:#FF8A3D">FLY</div>
+        <div class="svc-title">Flight bookings</div>
+        <p>IATA-accredited ticketing on all major airlines. Best routes for your money, booked sharp sharp.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="why-bg"></div>
+  <div class="why-grid">
+    <div data-reveal>
+      <h2>Why everybody dey choose <span>Winsky</span></h2>
+      <p>Born for Abuja, plugged into Dubai. We don turn thousands of "one day I go travel" into stamped passports and window seats. No agents-of-agents, no story-story — just your itinerary, handled end to end.</p>
+      <div class="stat-grid">
+        <div class="stat"><div class="stat-num">IATA</div><div class="stat-label">Accredited agency — the real deal</div></div>
+        <div class="stat"><div class="stat-num">3,000+</div><div class="stat-label">Travellers plugged and counting</div></div>
+        <div class="stat"><div class="stat-num">24/7</div><div class="stat-label">WhatsApp replies — even for midnight</div></div>
+        <div class="stat"><div class="stat-num">2 HQs</div><div class="stat-label">Abuja base, Dubai presence</div></div>
+      </div>
+    </div>
+    <div data-reveal style="position:relative">
+      <div class="boarding-pass">
+        <div class="bp-head"><span>WINSKY AIR ✈ BOARDING PASS</span><span>SOFT-LIFE CLASS</span></div>
+        <div class="bp-route">
+          <div><div class="bp-city">ABV</div><div class="bp-code">ABUJA</div></div>
+          <div class="bp-plane">✈ - - -</div>
+          <div style="text-align:right"><div class="bp-city">DXB</div><div class="bp-code">DUBAI</div></div>
+        </div>
+        <div class="bp-meta"><span>GATE 09</span><span>SEAT 1A</span><span>DEC 2026</span><span class="live-dot">● NOW BOARDING</span></div>
+        <div class="bp-barcode"><div class="bp-barcode-bar"></div><span style="font:600 10px 'IBM Plex Mono',monospace;color:#8A8FA3;margin-left:14px">WSK-0280</span></div>
+      </div>
+      <div class="bp-badge">your name here soon ✈</div>
+    </div>
+  </div>
+</section>
+
+<section id="clientcam">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <h2>Client <span>cam</span> 📸</h2>
+      <span>real people, real stamps, zero filter</span>
+    </div>
+    <div class="grid3">
+      <div class="testi-card" data-reveal style="transform:rotate(-3deg)">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Dune%20bashing%20in%20Dubai.jpg?width=1200" alt="Dune bashing, Dubai" loading="lazy">
+        <div class="testi-cap">Amaka x Burj Khalifa 🤍</div>
+        <p>"I just said 'I wan see Dubai for December' and these people handled EVERYTHING. Visa, hotel, safari. I no lift finger."</p>
+        <div class="testi-who">AMAKA — ABUJA → DUBAI</div>
+      </div>
+      <div class="testi-card" data-reveal style="transform:rotate(2deg)">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Al-Haram%20mosque%20-%20Flickr%20-%20Al%20Jazeera%20English.jpg?width=1200" alt="Al-Haram Mosque" loading="lazy">
+        <div class="testi-cap">Alhaji's first Umrah 🕊</div>
+        <p>"From visa to hotels walking distance from the Haram — everything was seamless. May Allah reward the Winsky team."</p>
+        <div class="testi-who">YUSUF — KANO → MAKKAH</div>
+      </div>
+      <div class="testi-card" data-reveal style="transform:rotate(-1.5deg)">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Zanzibar%20Beach.JPG?width=1200" alt="Zanzibar beach" loading="lazy">
+        <div class="testi-cap">the girls in Zanzibar!! 🌴</div>
+        <p>"All-inclusive means ALL-INCLUSIVE. We no touch our wallet for 5 days. Winsky, una too much."</p>
+        <div class="testi-who">TOLU & CREW — LAGOS → ZANZIBAR</div>
+      </div>
+    </div>
+    <div class="credit">Destination photos: Wikimedia Commons contributors.</div>
+  </div>
+</section>
+
+<div class="marquee-wrap pink"><div class="marquee-track rev">
+  <span>DUBAI ✦ ZANZIBAR ✦ MALAYSIA ✦ MOROCCO ✦ UMRAH ✦ CORPORATE ✦ FLIGHTS ✦ VISAS ✦&nbsp;</span>
+  <span>DUBAI ✦ ZANZIBAR ✦ MALAYSIA ✦ MOROCCO ✦ UMRAH ✦ CORPORATE ✦ FLIGHTS ✦ VISAS ✦&nbsp;</span>
+</div></div>
+
+<section id="faqs">
+  <div class="tf-grid">
+    <div data-reveal id="team">
+      <h2>Meet your <span class="blue">plugs</span></h2>
+      <p>Small team, mighty hustle. The faces wey dey reply your DMs and chase your visas.</p>
+      <div>
+        <div class="team-row" style="transform:rotate(-1deg)"><div class="team-avatar">O</div><div><div class="team-name">The Oga</div><div class="team-role">FOUNDER · DUBAI PLUG-IN-CHIEF</div></div></div>
+        <div class="team-row" style="transform:rotate(1deg)"><div class="team-avatar">V</div><div><div class="team-name">Visa Queen</div><div class="team-role">VISA DESK · DOCUMENT WHISPERER</div></div></div>
+        <div class="team-row" style="transform:rotate(-0.5deg)"><div class="team-avatar">C</div><div><div class="team-name">Client Cam Op</div><div class="team-role">CLIENT EXPERIENCE · DM REPLIER</div></div></div>
+      </div>
+    </div>
+    <div data-reveal>
+      <h2>Questions wey <span class="pink">people dey ask</span></h2>
+      <p>If your own no dey here, you know where to find us — the DMs.</p>
+      <div>
+        <details class="faq-item" open>
+          <summary>How long visa processing dey take?<span class="faq-plus">+</span></summary>
+          <p>Dubai visas typically land within 24–72 hours once your documents complete. Umrah, Malaysia and Morocco vary by season — message us with your travel date and we go give you the honest timeline, no packaging.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Wetin dey inside the packages?<span class="faq-plus">+</span></summary>
+          <p>Flights, hotel, visa, airport pickup and the headline activities (desert safari, city tour, beach resort — depending on destination). Tell us your budget and headcount, we go build the package around am.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I pay in naira?<span class="faq-plus">+</span></summary>
+          <p>Yes o. Naira transfer, dirhams, or card — we go send you the account details and a clear breakdown before you pay anything.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Una dey do group trips?<span class="faq-plus">+</span></summary>
+          <p>Our specialty! Detty December crews, honeymooners, office retreats, family Umrah — groups actually get better hotel and activity rates, so gather your people.</p>
+        </details>
+        <details class="faq-item">
+          <summary>I never get international passport — una fit help?<span class="faq-plus">+</span></summary>
+          <p>We no dey issue passports, but we go walk you through the application step by step and plan your trip so e ready the moment your passport lands.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-fly" style="top:34px;left:6%">✈</div>
+  <div class="contact-fly f2" style="bottom:40px;right:8%">✈</div>
+  <div class="wrap" data-reveal>
+    <div class="contact-note">passport dey? okay oya —</div>
+    <h2>Oya, make we <span>plan am.</span></h2>
+    <p>No prices for site, no long form — just message us, tell us your dream, we go turn am to boarding pass.</p>
+    <div class="contact-btns">
+      <a class="dark-btn" href="https://wa.me/971555197816" target="_blank" rel="noopener">WhatsApp us → +971 55 519 7816</a>
+      <a class="outline-btn" href="https://instagram.com/winskytravels" target="_blank" rel="noopener">@winskytravels</a>
+    </div>
+    <div class="contact-foot">we dey reply sharp sharp — even for midnight 🌙</div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-row">
+    <div class="footer-brand"><span>Winsky Travels</span><span>turning dreams into boarding passes</span></div>
+    <div class="footer-links"><a href="#packages">PACKAGES</a><a href="#services">VISAS</a><a href="#clientcam">CLIENT CAM</a><a href="#contact">CONTACT</a></div>
+    <div class="footer-copy">© 2026 Winsky Travels · IATA accredited · Abuja HQ, global reach</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var fine = window.matchMedia('(pointer:fine)').matches;
+  var cursor = document.getElementById('wsk-cursor'), dot = document.getElementById('wsk-dot');
+  if (!fine) return;
+  var mx=-100,my=-100,px=mx,py=my,ang=0,scale=1,curScale=1;
+  window.addEventListener('mousemove', function(e){
+    mx=e.clientX; my=e.clientY;
+    dot.style.transform = 'translate(' + (mx-5) + 'px,' + (my-5) + 'px)';
+  });
+  window.addEventListener('mouseover', function(e){
+    scale = e.target.closest && e.target.closest('a,[data-cta]') ? 1.55 : 1;
+  });
+  (function loop(){
+    var dx=mx-px, dy=my-py;
+    px += dx*0.13; py += dy*0.13;
+    if (Math.hypot(dx,dy) > 2){
+      var target = Math.atan2(dy,dx) * 180/Math.PI;
+      var delta = ((target-ang+540)%360)-180;
+      ang += delta*0.15;
+    }
+    curScale += (scale-curScale)*0.2;
+    cursor.style.transform = 'translate(' + (px-17) + 'px,' + (py-17) + 'px) rotate(' + ang + 'deg) scale(' + curScale.toFixed(3) + ')';
+    requestAnimationFrame(loop);
+  })();
+})();
+
+(function(){
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en,i){
+      if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('[data-reveal]').forEach(function(el,i){
+    var r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight){ el.classList.add('in'); return; }
+    el.style.transitionDelay = ((i % 3) * 90) + 'ms';
+    io.observe(el);
+  });
+})();
+
+document.querySelectorAll('.faq-item').forEach(function(item, idx){
+  item.addEventListener('toggle', function(){
+    if (item.open) {
+      document.querySelectorAll('.faq-item').forEach(function(other){
+        if (other !== item) other.open = false;
+      });
+    }
+  });
+});
+</script>
+</body>
+</html>
